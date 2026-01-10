@@ -200,13 +200,14 @@ public class PerformImputation {
         public void write(FileOutputStream fos) throws IOException {
             Writer w = new OutputStreamWriter(fos);
             BufferedWriter bw = new BufferedWriter(w);
-            bw.write("dateHuman;dateMs;consumption;selfConsumption;export;storagePower;storageEnergyLevel;solarProduction;imported\n");
+            bw.write("dateHuman;dateMs;dateMonth;consumption;selfConsumption;export;storagePower;storageEnergyLevel;solarProduction;imported\n");
             for (Day day : days.values()) {
                 for (int i = 0; i < day.records.length; i++) {
                     QuarterHourRecord r = day.records[i];
                     Date d = new Date(day.startOfDay.getTime() + i * MS_PER_QUARTER);
                     bw.write("\"" + DATE_FORMAT.format(d) + "\";" +
                             d.getTime() + ";" +
+                            (d.getMonth() + 1) + ";" +
                             r.consumption + ";" +
                             r.selfConsumption + ";" +
                             r.export + ";" +
