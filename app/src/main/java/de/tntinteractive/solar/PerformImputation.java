@@ -163,6 +163,7 @@ public class PerformImputation {
             List<Day> templates = pickTemplates(i, day);
             Day selected = templates.get(random.nextInt(templates.size()));
             day.fillNaNsWith(selected);
+            assert !day.containsNaNs();
         }
 
         public Day getOrCreateDay(int i) {
@@ -215,6 +216,7 @@ public class PerformImputation {
                             r.imported + "\n");
                 }
             }
+            bw.flush();
         }
     }
 
