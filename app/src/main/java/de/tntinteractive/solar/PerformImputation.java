@@ -183,7 +183,7 @@ public class PerformImputation {
             Date first = days.firstKey();
             Date last = days.lastKey();
             long diff = last.getTime() - first.getTime();
-            return (int) (diff / MS_PER_DAY);
+            return (int) (diff / MS_PER_DAY) + 1;
         }
 
         public void add(Date dateTime, QuarterHourRecord record) {
